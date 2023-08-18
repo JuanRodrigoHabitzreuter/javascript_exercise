@@ -6,7 +6,9 @@
 //executar arquivo usando o comando:
 
 import express from "express";
-import {somar} from './exercicios/exercicio1.js'
+import {somar} from './exercicios/exercicio1.js';
+import { diminuir } from "./exercicios/exercicio2.js";
+
 const app = express();
 const port = 3000;
 app.use(express.json())
@@ -21,6 +23,15 @@ app.post("/api/exercicio1", (req, res) => {
   })
 })
 
+app.post("/api/exercicioplus1", (req, res) => {
+
+  const num1 = (req.body.num1)
+  const num2 = (req.body.num2)
+
+  res.json({
+    message: `resultado ${num1 - num2}` 
+  })
+})
 // app.get("/api/exercicio2", (req, res) => {
 
 //   //console.log(req)
