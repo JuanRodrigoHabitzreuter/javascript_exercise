@@ -7,19 +7,21 @@
 
 import express from "express";
 import {somar} from './exercicios/exercicio1.js';
-import { diminuir } from "./exercicios/exercicio2.js";
+import { diminuir } from "./exercicios/exercicio1plus.js";
+import { wage } from "./exercicios/exercicio2.js";
+import { mediaCinco } from "./exercicios/exercicio3.js";
 
 const app = express();
 const port = 3000;
 app.use(express.json())
 
 app.post("/api/exercicio1", (req, res) => {
-
+  
   const num1 = (req.body.num1)
   const num2 = (req.body.num2)
 
   res.json({
-    message: `resultado ${num1 + num2}` 
+    message: `resultado ${somar(num1,num2)}` 
   })
 })
 
@@ -28,8 +30,33 @@ app.post("/api/exercicioplus1", (req, res) => {
   const num1 = (req.body.num1)
   const num2 = (req.body.num2)
 
+
   res.json({
-    message: `resultado ${num1 - num2}` 
+    message: `resultado ${diminuir(num1,num2)}` 
+  })
+})
+
+app.post("/api/exercicio2", (req, res) => {
+  
+  const workedHours = (req.body.workedHours)
+  const totalHours = (req.body.totalHours)
+  const wages = (req.body.wage)
+
+  res.json({
+    message: `resultado ${wage(workedHours,totalHours,wages)}` 
+  })
+})
+
+app.post("/api/exercicio3", (req, res) => {
+  
+  const weight1 = (req.body.weight1)
+  const weight2 = (req.body.weight2)
+  const weight3 = (req.body.weight3)
+  const weight4 = (req.body.weight4)
+  const weight5 =  (req.body.weight5)
+
+  res.json({
+    message: `resultado ${mediaCinco(weight1,weight2,weight3,weight4,weight5)}` 
   })
 })
 // app.get("/api/exercicio2", (req, res) => {
