@@ -34,6 +34,8 @@ function averages2(grade1, grade2, grade3) {
     } else {
         msg = 'Disapproved'
     }
+    
+    const result = 0
 
     return {
         message: `Resultado: ${result.toFixed(2)}`,

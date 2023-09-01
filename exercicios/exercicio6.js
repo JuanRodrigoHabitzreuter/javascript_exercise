@@ -1,4 +1,4 @@
-export function duration(timeInSeconds) {
+function duration(timeInSeconds) {
 
         return [(timeInSeconds / 3600),
         ((timeInSeconds % 3600) / 60),
@@ -10,5 +10,6 @@ export function duration(timeInSeconds) {
             // return ((timeInSeconds / 3600)),
             // ((timeInSeconds % 3600) / 60),
             // ((timeInSeconds % 3600) % 60);
+            module.exports = {duration}
 
 
