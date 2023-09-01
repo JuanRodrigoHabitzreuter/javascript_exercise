@@ -32,6 +32,7 @@ const { convertMetersCentimeters } = require('./exercicios/exercicio7.js')
 const { multiplicationTables } = require('./exercicios/exercicio8.js')
 const { averages, averages1, averages2 } = require('./exercicios/exercicio9.js')
 const { IMC } = require('./exercicios/exercicio10.js')
+const { choiceOperation } = require('./exercicios/exercicio11.js')
 
 
 // const express = require('express')
@@ -104,7 +105,7 @@ app.post('/api/exercicio5', (req, res) => {
   })
 })
 
-// ?revisar não compreendi?
+//?utizei [] array
 app.post('/api/exercicio6', (req, res) => {
 
   const timeInSeconds = (req.body.timeInSeconds)
@@ -117,7 +118,7 @@ app.post('/api/exercicio6', (req, res) => {
   })
 })
 
-//?não aparece dois valores tbm?
+//?utizei [] array
 app.post('/api/exercicio7', (req, res) => {
 
   const km = (req.body.km)
@@ -127,57 +128,49 @@ app.post('/api/exercicio7', (req, res) => {
   })
 })
 
-//?não aparece dois valores tbm, utizei [] array
+//?utizei [] array
 app.post('/api/exercicio8', (req, res) => {
 
   const multiplicationTable = (req.body.multiplicationTable)
 
   res.json({
     message: multiplicationTables(multiplicationTable)
-  })
-})
-
-app.post('/api/desafio0', (req, res) => {
-
-  const multiplicationTable = (req.body.multiplicationTable)
-
-  res.json({
-    message: `resultado ${multiplicationTables(multiplicationTable)}`
+    //     message: `resultado ${multiplicationTables(multiplicationTable)}`
   })
 })
 
 
+  app.post("/api/exercicio9", (req, res) => {
 
-
-  // app.post("/api/exercicio9", (req, res) => {
-  //   const grade1 = req.body.grade1;
-  //   const grade2 = req.body.grade2;
-  //   const grade3 = req.body.grade3;
+    const grade1 = req.body.grade1;
+    const grade2 = req.body.grade2;
+    const grade3 = req.body.grade3;
   //   const result = averages(grade1, grade2, grade3);
   //   const result1 = averages1(grade1, grade2, grade3);
-  //   const result2 = averages2(grade1, grade2, grade3);
+    const result2 = averages2(grade1, grade2, grade3);
   
-  //   let resultMessage = "";
-  //   if (result >= 7) {
-  //     resultMessage = `Your grade is: ${result.toFixed(2)} Approved`;
-  //   } else if (result >= 5) {
-  //     resultMessage = `Your grade is: ${result.toFixed(2)} Recovery`;
-  //   } else {
-  //     resultMessage = `Your grade is: ${result.toFixed(2)} Disapproved`;
-  //   }
+    let resultMessage = "";
+    if (result >= 7) {
+      resultMessage = `Your grade is: ${result.toFixed(2)} Approved`;
+    } else if (result >= 5) {
+      resultMessage = `Your grade is: ${result.toFixed(2)} Recovery`;
+    } else {
+      resultMessage = `Your grade is: ${result.toFixed(2)} Disapproved`;
+    }
   
-  //   console.log(resultMessage);
+    console.log(resultMessage);
+
   
   //   res.json({
   //     message: `Resultado: ${result.toFixed(2)}`,
   //     gradeStatus: resultMessage
   //   })
       
-    // res.json({
-    //   message: `Resultado: ${result1}`
-    // })
+  //   res.json({
+  //     message: `Resultado: ${result1}`
+  //   })
     
-  //   res.json(result2)
+    res.json(result2)
   // })
   
 //   const average = req.body.average;
@@ -197,8 +190,8 @@ app.post('/api/desafio0', (req, res) => {
 //   res.json({
 //     message: `Resultado: ${[averages.toFixed(2),
 //     avarage]}`
-//   });
-// });
+//   })
+})
 
 
 // app.post("/api/exercicio9", (req, res) => {
@@ -222,11 +215,13 @@ app.post('/api/desafio0', (req, res) => {
 //   })
 // })
 
-//! não consegui
+//! revisar
 app.post("/api/exercicio10", (req, res) => {
 
   const gender = req.body.gender;
   const height = req.body.height;
+
+  const result = IMC(gender,height)
 
   // let resultMessage = "";
   // if (averages >= 7) {
@@ -239,9 +234,24 @@ app.post("/api/exercicio10", (req, res) => {
 
   // console.log(resultMessage);
 
+  res.json(result) // gradeStatus: resultMessage
+  
+})
+
+
+app.post('/api/exercicio11', (req, res) => {
+
+  const number1 = (req.body.number1)
+  const number2 = (req.body.number2)
+  
+
   res.json({
-    message: `Resultado: ${IMC(gender)}`,
-    // gradeStatus: resultMessage
+    message: `resultado ${choiceOperatione(number1,number2)}`
+
+  })
+
+  res.json({
+    message: multiplicationTables(multiplicationTable)
   })
 })
 
@@ -268,11 +278,6 @@ app.post("/api/exercicio10", (req, res) => {
 //   res.json({message: 'Batata!'}); 
 // });
 
-// app.listen(port, ()  =>{
-//   console.log(`Servidor rodando na porta ${port}!`);
- //para visualizar no navegaor
-  //localhost:3000/
-// });
 
  //desafio2 metodo get
 //executar arquivo usando o comando:
