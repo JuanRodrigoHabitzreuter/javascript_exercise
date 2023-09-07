@@ -33,6 +33,14 @@ const { multiplicationTables } = require('./exercicios/exercicio8.js')
 const { averages, averages1, averages2 } = require('./exercicios/exercicio9.js')
 const { IMC } = require('./exercicios/exercicio10.js')
 const { choiceOperation } = require('./exercicios/exercicio11.js')
+const { verification } = require('./exercicios/exercicio12.js')
+const { inquiry } = require('./exercicios/exercicio13.js')
+const { biggerThen } = require('./exercicios/exercicio14.js')
+const { triangle } = require('./exercicios/exercicio15.js')
+const { incomeTax } = require('./exercicios/exercicio16.js')
+const { gradeAvarage, weightedAverage } = require('./exercicios/exercicio17.js')
+const { carSale } = require('./exercicios/exercicio18.js')
+const { IPIs} =  require('./exercicios/exercicio20.js')
 
 
 // const express = require('express')
@@ -41,13 +49,13 @@ app.use(express.json())
 const port = 3000;
 
 // app.post("/api/exercicio1", (req, res) => {
-  app.post('/api/exercicio1', (req, res) => {
+app.post('/api/exercicio1', (req, res) => {
 
   const num1 = (req.body.num1)
   const num2 = (req.body.num2)
 
   res.status(200).json({
-    message: `resultado ${somar(num1, num2)}`
+    message: `View: ${somar(num1, num2)}`
   })
 })
 
@@ -58,18 +66,18 @@ app.post('/api/exercicioplus1', (req, res) => {
 
 
   res.status(200).json({
-    message: `resultado ${diminuir(num1, num2)}`
+    message: `View: ${diminuir(num1, num2)}`
   })
 })
 
-app.post('/api/exercicio2' , (req, res) => {
+app.post('/api/exercicio2', (req, res) => {
 
   const workedHours = (req.body.workedHours)
   const totalHours = (req.body.totalHours)
   const wages = (req.body.wage)
 
   res.json({
-    message: `resultado ${wage(workedHours, totalHours, wages)}`
+    message: `View: ${wage(workedHours, totalHours, wages)}`
   })
 })
 
@@ -82,7 +90,7 @@ app.post('/api/exercicio3', (req, res) => {
   const weight5 = (req.body.weight5)
 
   res.json({
-    message: `resultado ${avarageFive(weight1, weight2, weight3, weight4, weight5)}`
+    message: `View: ${avarageFive(weight1, weight2, weight3, weight4, weight5)}`
 
   })
 })
@@ -92,7 +100,7 @@ app.post('/api/exercicio4', (req, res) => {
   const temperature = (req.body.temperature)
 
   res.json({
-    message: `resultado ${convertFahrenheit(temperature)}`
+    message: `View: ${convertFahrenheit(temperature)}`
   })
 })
 
@@ -101,7 +109,7 @@ app.post('/api/exercicio5', (req, res) => {
   const milhas = (req.body.milhas)
 
   res.json({
-    message: `resultado ${convertKm(milhas)}`
+    message: `View: ${convertKm(milhas)}`
   })
 })
 
@@ -114,7 +122,7 @@ app.post('/api/exercicio6', (req, res) => {
   const seconds = (req.body.seconds)
 
   res.json({
-    message: `resultado ${duration(timeInSeconds,hours, minutes, seconds)}`
+    message: `View: ${duration(timeInSeconds, hours, minutes, seconds)}`
   })
 })
 
@@ -124,7 +132,7 @@ app.post('/api/exercicio7', (req, res) => {
   const km = (req.body.km)
 
   res.json({
-    message: `resultado ${convertMetersCentimeters(km)}`
+    message: `View: ${convertMetersCentimeters(km)}`
   })
 })
 
@@ -135,44 +143,26 @@ app.post('/api/exercicio8', (req, res) => {
 
   res.json({
     message: multiplicationTables(multiplicationTable)
-    //     message: `resultado ${multiplicationTables(multiplicationTable)}`
+    //     message: `View: ${multiplicationTables(multiplicationTable)}`
   })
 })
 
 
-  app.post("/api/exercicio9", (req, res) => {
+app.post("/api/exercicio9", (req, res) => {
+  const grade1 = req.body.grade1;
+  const grade2 = req.body.grade2;
+  const grade3 = req.body.grade3;
+  const result = averages2(grade1, grade2, grade3);
 
-    const grade1 = req.body.grade1;
-    const grade2 = req.body.grade2;
-    const grade3 = req.body.grade3;
-  //   const result = averages(grade1, grade2, grade3);
-  //   const result1 = averages1(grade1, grade2, grade3);
-    const result2 = averages2(grade1, grade2, grade3);
-  
-    let resultMessage = "";
-    if (result >= 7) {
-      resultMessage = `Your grade is: ${result.toFixed(2)} Approved`;
-    } else if (result >= 5) {
-      resultMessage = `Your grade is: ${result.toFixed(2)} Recovery`;
-    } else {
-      resultMessage = `Your grade is: ${result.toFixed(2)} Disapproved`;
-    }
-  
-    console.log(resultMessage);
+  res.json(result)
 
-  
   //   res.json({
-  //     message: `Resultado: ${result.toFixed(2)}`,
-  //     gradeStatus: resultMessage
+  //     message: `View:: ${result1}`
   //   })
-      
-  //   res.json({
-  //     message: `Resultado: ${result1}`
-  //   })
-    
-    res.json(result2)
-  // })
-  
+
+  // res.json(result2)
+})
+
 //   const average = req.body.average;
 //   const grade1 = req.body.grade1;
 //   const grade2 = req.body.grade2;
@@ -188,10 +178,10 @@ app.post('/api/exercicio8', (req, res) => {
 //   }
 
 //   res.json({
-//     message: `Resultado: ${[averages.toFixed(2),
+//     message: `View:: ${[averages.toFixed(2),
 //     avarage]}`
 //   })
-})
+// })
 
 
 // app.post("/api/exercicio9", (req, res) => {
@@ -211,7 +201,7 @@ app.post('/api/exercicio8', (req, res) => {
 //     }
 
 //   res.json({
-//     message: `resultado ${averages(avarage,grade1,grade2,grade3)}`
+//     message: `View: ${averages(avarage,grade1,grade2,grade3)}`
 //   })
 // })
 
@@ -221,7 +211,7 @@ app.post("/api/exercicio10", (req, res) => {
   const gender = req.body.gender;
   const height = req.body.height;
 
-  const result = IMC(gender,height)
+  const result = IMC(gender, height)
 
   // let resultMessage = "";
   // if (averages >= 7) {
@@ -235,7 +225,7 @@ app.post("/api/exercicio10", (req, res) => {
   // console.log(resultMessage);
 
   res.json(result) // gradeStatus: resultMessage
-  
+
 })
 
 
@@ -243,43 +233,166 @@ app.post('/api/exercicio11', (req, res) => {
 
   const number1 = (req.body.number1)
   const number2 = (req.body.number2)
-  
+  const operation = (req.body.operation)
 
-  res.json({
-    message: `resultado ${choiceOperatione(number1,number2)}`
+
+  res.status(200).json({
+    message: `View: ${choiceOperation(number1, number2, operation)}`
 
   })
 
-  res.json({
-    message: multiplicationTables(multiplicationTable)
-  })
 })
 
+//? verificar outra forma na função para chamara o resultado
+app.post('/api/exercicio12', (req, res) => {
 
+  const number = (req.body.number)
 
+  res.status(200).json(verification(number))
+
+})
+
+app.post('/api/exercicio13', (req, res) => {
+
+  const number = (req.body.number)
+
+  res.status(200).json({
+    message: `View: ${inquiry(number)}`
+
+  })
+
+})
+
+app.post('/api/exercicio14', (req, res) => {
+
+  const number1 = (req.body.number1)
+  const number2 = (req.body.number2)
+
+  res.status(200).json({
+    message: `View: ${biggerThen(number1, number2)}`
+
+  })
+
+})
+
+//!verificar
+app.post('/api/exercicio15', (req, res) => {
+
+  const a = (req.body.a)
+  const b = (req.body.b)
+  const c = (req.body.c)
+
+  res.status(200).json({
+    message: `View: ${triangle(number1, number2)}`
+
+  })
+
+})
+
+//!verificar
+app.post('/api/exercicio16', (req, res) => {
+
+  const cpf = (req.body.cpf)
+  const minimumWage = (req.body.minimumWage)
+  const numberOfDependents = (req.body.numberOfDependents)
+  const monthlyIncome = (req.body.monthlyIncome)
+
+  res.status(200).json({
+    message: `View: ${incomeTax(cpf, minimumWage, numberOfDependents, monthlyIncome)}`
+
+  })
+
+})
+
+app.post('/api/exercicio17', (req, res) => {
+
+  const grade1 = (req.body.grade1)
+  const grade2 = (req.body.grade2)
+  const grade3 = (req.body.grade3)
+  
+  const avarage = (req.body.avarage)
+
+  res.status(200).json({
+    message: `View: ${weightedAverage(grade1, grade2, grade3, avarage)}`
+
+  })
+
+})
+// verificar resutado
+app.post('/api/exercicio18', (req, res) => {
+
+  const factoryCost = (req.body.factoryCost)
+  const dealer = (req.body.dealer)
+  const taxes = (req.body.dealer)
+  const endValue = (req.body.endValue)
+  
+ 
+  res.status(200).json({
+    message: `View: ${carSale(factoryCost, dealer, taxes, endValue)}`
+
+  })
+
+})
+
+app.post('/api/exercicio19', (req, res) => {
+
+  const capital = (req.body.capital)
+  const rate = req.body.rate
+  const totalRate = (req.body.totalRate)
+  const interestAmount = (req.body.interestAmount)
+  const  days = (req.body.days)
+  const taxes = 0
+  
+ 
+  res.status(200).json({
+    message: `View: ${taxes(capital, rate, totalRate, interestAmount, days)}`
+
+  })
+
+})
+
+app.post('/api/exercicio20', (req, res) => {
+
+  
+  const code1 = (req.body.code1)
+  const code2 = (req.body.code2)
+  const pieces1 = (req.body.pieces1)
+  const pieces2 = (req.body.pieces2)
+  const value1 = (req.body.value1)
+  const value2 = (req.body.value2)
+  const IPI = (req.body.IPI)
+  const totalValue = (req.body.totalValue)
+    
+ 
+  res.status(200).json({
+    message: `View: ${IPIs(code1, code2, pieces1, pieces2, value1, value2, IPI, totalValue)}`
+
+  })
+
+})
 // app.get("/api/exercicio2", (req, res) => {
 
-   //console.log(req)
+//console.log(req)
 
 //   const num1 = parsefloat (req.query.num1)
 //   const num2 = parsefloat (req.query.num2)
 
 //   res.json({
-//     message: 'resultado ${num1 - num2}'
+//     message: 'View: ${num1 - num2}'
 //   })
 // })
 
 //  app.get("/", (req, res) => {
 
-  //app.get("/", (_, res)
- //req: requisição
-     //res: resposta
+//app.get("/", (_, res)
+//req: requisição
+//res: resposta
 //   res.json({message: 'Olá Mundo!'});
 //   res.json({message: 'Batata!'}); 
 // });
 
 
- //desafio2 metodo get
+//desafio2 metodo get
 //executar arquivo usando o comando:
 // app.get('/api/:userid/:nome', (req, res) => {
 //     const nome = req.query.nome;
