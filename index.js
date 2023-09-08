@@ -40,7 +40,9 @@ const { triangle } = require('./exercicios/exercicio15.js')
 const { incomeTax } = require('./exercicios/exercicio16.js')
 const { gradeAvarage, weightedAverage } = require('./exercicios/exercicio17.js')
 const { carSale } = require('./exercicios/exercicio18.js')
-const { IPIs} =  require('./exercicios/exercicio20.js')
+const { IPIs } = require('./exercicios/exercicio20.js')
+// const { judgment } = require('./exercicios/exercicio21.js')
+const { trafficTicket } = require('./exercicios/exercicio22.js')
 
 
 // const express = require('express')
@@ -126,7 +128,7 @@ app.post('/api/exercicio6', (req, res) => {
   })
 })
 
-//?utizei [] array
+//utizei [] array
 app.post('/api/exercicio7', (req, res) => {
 
   const km = (req.body.km)
@@ -136,7 +138,7 @@ app.post('/api/exercicio7', (req, res) => {
   })
 })
 
-//?utizei [] array
+//utizei [] array
 app.post('/api/exercicio8', (req, res) => {
 
   const multiplicationTable = (req.body.multiplicationTable)
@@ -210,21 +212,10 @@ app.post("/api/exercicio10", (req, res) => {
 
   const gender = req.body.gender;
   const height = req.body.height;
-
   const result = IMC(gender, height)
 
-  // let resultMessage = "";
-  // if (averages >= 7) {
-  //   resultMessage = `Your grade is: ${averages.toFixed(2)} Approved`;
-  // } else if (averages >= 5) {
-  //   resultMessage = `Your grade is: ${averages.toFixed(2)} Recovery`;
-  // } else {
-  //   resultMessage = `Your grade is: ${averages.toFixed(2)} Disapproved`;
-  // }
 
-  // console.log(resultMessage);
-
-  res.json(result) // gradeStatus: resultMessage
+  res.json(result)
 
 })
 
@@ -309,7 +300,7 @@ app.post('/api/exercicio17', (req, res) => {
   const grade1 = (req.body.grade1)
   const grade2 = (req.body.grade2)
   const grade3 = (req.body.grade3)
-  
+
   const avarage = (req.body.avarage)
 
   res.status(200).json({
@@ -325,8 +316,8 @@ app.post('/api/exercicio18', (req, res) => {
   const dealer = (req.body.dealer)
   const taxes = (req.body.dealer)
   const endValue = (req.body.endValue)
-  
- 
+
+
   res.status(200).json({
     message: `View: ${carSale(factoryCost, dealer, taxes, endValue)}`
 
@@ -340,10 +331,10 @@ app.post('/api/exercicio19', (req, res) => {
   const rate = req.body.rate
   const totalRate = (req.body.totalRate)
   const interestAmount = (req.body.interestAmount)
-  const  days = (req.body.days)
+  const days = (req.body.days)
   const taxes = 0
-  
- 
+
+
   res.status(200).json({
     message: `View: ${taxes(capital, rate, totalRate, interestAmount, days)}`
 
@@ -353,7 +344,7 @@ app.post('/api/exercicio19', (req, res) => {
 
 app.post('/api/exercicio20', (req, res) => {
 
-  
+
   const code1 = (req.body.code1)
   const code2 = (req.body.code2)
   const pieces1 = (req.body.pieces1)
@@ -362,14 +353,44 @@ app.post('/api/exercicio20', (req, res) => {
   const value2 = (req.body.value2)
   const IPI = (req.body.IPI)
   const totalValue = (req.body.totalValue)
-    
- 
+
+
   res.status(200).json({
     message: `View: ${IPIs(code1, code2, pieces1, pieces2, value1, value2, IPI, totalValue)}`
 
   })
 
 })
+
+//!verificar!
+// app.post('/api/exercicio21', (req, res) => {
+
+//   let respostasPositivas = 0 //(req.body.respostasPositivas)
+//   let respostasNegativas = 0 //(req.body.respostasNegativas)
+//   const verificarRespostas = (req.body.verificarRespostas)
+//   const nRespostas = (req.body.nRespostas)
+
+//   res.status(200).json({
+//     message: `View: ${judgment(respostasPositivas, respostasNegativas, verificarRespostas, nRespostas)}`
+
+//   })
+
+// })
+
+app.post('/api/exercicio22', (req, res) => {
+
+  const roadSpeed = (req.body, roadSpeed)
+  const speed = (req.body.speed)
+  const limit = (req.body.limit)
+
+  res.status(200).json({
+    message: `View: ${trafficTicket(roadSpeed, speed, limit)}`
+
+  })
+
+})
+
+
 // app.get("/api/exercicio2", (req, res) => {
 
 //console.log(req)
