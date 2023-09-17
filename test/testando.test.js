@@ -72,16 +72,26 @@
 //    })
 
 // })
-
+//importar//
 const { describe, expect, it } = require('@jest/globals')
-const { somar } = require('../exercicios/exercicio1.js')
 
+const { somar } = require('../exercicios/exercicio1.js')
 
 describe('Testes do primeiro exercício', () => {
    it('Should sum two numbers', () => {
       const result = somar(1, 2)
       
       expect(result).toBe(3);
+   })
+})
+
+const { diminuir } = require('../exercicios/exercicio1plus.js')
+
+describe('Testes do segundo exercício', () => {
+   it('Should sub two numbers', () => {
+      const result = () => diminuir(1, "a");
+      
+      expect(result).toThrowError("Favor informar números");
    })
 })
 
